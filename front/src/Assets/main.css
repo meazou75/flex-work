@@ -1,0 +1,29 @@
+body {
+    color: #878787;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.5;
+    background: #fafafa;
+    margin: 0;
+}
+
+.pT-25 {
+    padding-top: 25px;
+}
+
+.mT-40 {
+    margin-top: 40px;
+}
+
+.ctr {
+    position: relative;
+}
+
+.pa-0 {
+    padding: 0;
+}
+
+.blue {
+    color: #09B1D0;
+}
