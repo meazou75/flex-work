@@ -1,1 +1,1 @@
-export const endpoint = 'http://localhost:8088';
+export const endpoint = 'http://149.91.89.41:8088';
