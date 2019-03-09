@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const DataModel = require('./DataModel');
 
+// Connexion au serveur MongoDB
+
 mongoose
     .connect(
         'mongodb://149.91.89.41/flex-work',

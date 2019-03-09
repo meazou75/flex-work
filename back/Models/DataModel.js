@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Model utilisé par MongoDB 
+
 const DataSchema = new Schema({
     tempCelsius : { type: Number, required: true },
     tempFahrenheit : { type: Number, required: true },

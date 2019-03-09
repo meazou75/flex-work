@@ -23,23 +23,26 @@ app.use('/', (_, res, next) => {
     next();
 });
 
-// Listen
+// Création d'un serveur HTTP d'écoute sur le port 8088
 httpServer.listen(8088, () =>
     console.log(`> Ready on http://0.0.0.0:8088`)
 );
 
+// Route Type OPTION sur /login redirigeant sur /login en POST
 app.options('/login', (_, res) => res.send('POST'));
 
+// Route Type POST sur /login
 app.post('/login', (req, res) => {
     const user = Kings.find(
         ({ login, password }) =>
             login === req.body.login && password === sha1(req.body.password)
-    );
+    ); // Retourne l'utilisateur en fonction du mot de passe & username renseigné
 
-    if (!user) {
+    if (!user) { // Si l'utilisateur n'existe pas renvoie false
         return res.json({ success: false });
     }
 
+    // Si l'utilisateur existe renvoie true et génere un token d'authentification
     return res.json({ success: true, token: genToken(user.id) });
 });
 
