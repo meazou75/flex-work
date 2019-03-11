@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
 // Retourne sous forme de tableau d'objets l'ensemble des données stockées dans la BDD
 
 router.get('/', (req, res) => {
-    models.DataModel.find().then(datas => res.json(datas));
+    models.DataModel.find().sort('date', -1).then(datas => res.json(datas));
 });
 
 module.exports = router;
