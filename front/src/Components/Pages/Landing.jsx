@@ -14,9 +14,19 @@ class Landing extends Component {
             datas: [],
             loading: true
         };
+
+        this.getData = this.getData.bind(this);
     }
 
     componentDidMount() {
+        this.interval = setInterval(() => this.getData(), 30000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    getData() {
         fetch(`${endpoint}/data`)
             .then(res => res.json())
             .then(datas => {
@@ -79,7 +89,13 @@ class Landing extends Component {
                                     {this.state.datas.map(element => {
                                         return (
                                             <tr key={element._id}>
-                                                <th scope="row">{moment(element.date).format('DD/MM/YYYY HH:mm')}</th>
+                                                <th scope="row">
+                                                    {moment(
+                                                        element.date
+                                                    ).format(
+                                                        'DD/MM/YYYY HH:mm'
+                                                    )}
+                                                </th>
                                                 <td>{element.tempCelsius}</td>
                                                 <td>
                                                     {element.tempFahrenheit}
