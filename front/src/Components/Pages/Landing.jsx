@@ -19,6 +19,7 @@ class Landing extends Component {
     }
 
     componentDidMount() {
+        this.getData();
         this.interval = setInterval(() => this.getData(), 30000);
     }
 
