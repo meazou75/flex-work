@@ -7,7 +7,7 @@ const DataSchema = new Schema({
     tempCelsius : { type: Number, required: true },
     tempFahrenheit : { type: Number, required: true },
     humidity : { type: Number, required: true },
-    date : { type: Date, default: new Date()}
+    date : { type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('Data', DataSchema);
