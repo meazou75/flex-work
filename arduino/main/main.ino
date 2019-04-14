@@ -8,8 +8,8 @@
 #define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
 
 // Replace with your network credentials
-const char* ssid     = "iPhone";
-const char* password = "mehdi1306";
+const char* ssid     = "iPhone de Francois";
+const char* password = "azerty123";
 
 // DHT Sensor
 const int DHTPin = 27;
@@ -30,6 +30,7 @@ int val = 0;                    // variable for reading the pin status
 static char celsiusTemp[7];
 static char fahrenheitTemp[7];
 static char humidityTemp[7];
+static char distanceMes[7];
 
 // Client variables 
 char linebuf[80];
@@ -98,10 +99,9 @@ void loop() {
         //dtostrf(hic, 6, 2, celsiusTemp);
         sprintf(celsiusTemp, "%g", t);         
         float hif = dht.computeHeatIndex(f, h);
-        sprintf(fahrenheitTemp, "%g", f);
         //dtostrf(hif, 6, 2, fahrenheitTemp);         
         //dtostrf(h, 6, 2, humidityTemp);
-        sprintf(humidityTemp, "%g", h);
+        sprintf(humidityTemp, "%f", h);
     }
     digitalWrite(trigPin, LOW);
     delay(500);
@@ -117,26 +117,34 @@ void loop() {
     // Calculating the distance
     distance= duration*0.034/2;
 
+    sprintf(distanceMes, "%d", distance);
+
     val = digitalRead(inputPin);  // read input value
 
+    Serial.println("--------BEFORE STRING-------");
+    Serial.println(h);
+    Serial.println(t);
+    Serial.println(distance);
+
+    Serial.println("--------AFTER STRING-------");
     Serial.println(humidityTemp);
     Serial.println(celsiusTemp);
-    Serial.println(fahrenheitTemp);
+    Serial.println(distanceMes);
 
     char body[120];
     strcpy(body, "{\"tempCelsius\":\"");
     strcat(body, celsiusTemp);
-    strcat(body, "\",\"tempFahrenheit\":\"");
-    strcat(body, fahrenheitTemp);
     strcat(body, "\",\"humidity\":\"");
     strcat(body, humidityTemp);
+    strcat(body, "\",\"distance\":\"");
+    strcat(body, distanceMes);
     strcat(body, "\"}");
 
     Serial.println(body);
 
     HTTPClient http;   
     
-    http.begin("http://149.91.89.41:8088/data");  //Specify destination for HTTP request
+    http.begin("http://185.216.25.195:8088/data");  //Specify destination for HTTP request
     http.addHeader("Content-Type", "application/json");             //Specify content-type header
     
     //String body = String("{\"tempCelsius\":\"" + celsiusTemp + "\",\"tempFahrenheit\":\"" + fahrenheitTemp + "\",\"humidity\":\"" + humidityTemp + "\"}")
@@ -149,9 +157,9 @@ void loop() {
       Serial.println(httpResponseCode);
       Serial.println(response);
     } else {
-      Serial.println("Error in Wi-Fi");  
+      Serial.println("Error in sending data process");  
     }
 
     // give the web browser time to receive the data
-    delay(60000);
+    delay(10000);
 }

@@ -5,7 +5,7 @@ const DataModel = require('./DataModel');
 
 mongoose
     .connect(
-        'mongodb://149.91.89.41/flex-work',
+        'mongodb://185.216.25.195/flex-work',
         { useNewUrlParser: true }
     )
     .catch(() => console.error('Cannot connect to mongodb'));

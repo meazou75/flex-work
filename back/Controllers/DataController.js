@@ -3,14 +3,14 @@ const models = require('../Models');
 
 // Fonction prenant en paramètres la temperature et l'humidité et ajoutant en BDD les valeurs 
 
-const addData = async ({ tempCelsius, tempFahrenheit, humidity }) => {
+const addData = async ({ tempCelsius, humidity, distance }) => {
 
     // Création d'un nouvelle objet de type DataModel
 
     const newData = new models.DataModel({
         tempCelsius,
-        tempFahrenheit,
-        humidity
+        humidity,
+        distance
     });
 
     // Création d'un objet errors qui contiendra les erreurs en cas d'erreurs

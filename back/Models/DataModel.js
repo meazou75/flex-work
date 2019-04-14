@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 
 const DataSchema = new Schema({
     tempCelsius : { type: Number, required: true },
-    tempFahrenheit : { type: Number, required: true },
     humidity : { type: Number, required: true },
+    distance: {type: Number, required: true},
     date : { type: Date, default: Date.now}
 });
 

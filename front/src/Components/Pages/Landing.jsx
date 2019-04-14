@@ -74,7 +74,7 @@ class Landing extends Component {
                         <h1>
                             Flex Work Project{' '}
                             <span className="sub-title">
-                                by Mehdi Soltana &amp; ---- &amp; ----
+                                by Mehdi Soltana
                             </span>
                         </h1>
                         <hr />
@@ -89,8 +89,8 @@ class Landing extends Component {
                                     <tr>
                                         <th>Date</th>
                                         <th>Température Celsius</th>
-                                        <th>Température Fahrenheit</th>
                                         <th>Humidité</th>
+                                        <th>Distance (cm)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -107,10 +107,10 @@ class Landing extends Component {
                                                     )}
                                                 </th>
                                                 <td>{element.tempCelsius}</td>
-                                                <td>
-                                                    {element.tempFahrenheit}
-                                                </td>
                                                 <td>{element.humidity}</td>
+                                                <td>
+                                                    {element.distance}
+                                                </td>
                                             </tr>
                                         );
                                     })}
