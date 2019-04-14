@@ -8,8 +8,8 @@
 #define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
 
 // Replace with your network credentials
-const char* ssid     = "iPhone de Francois";
-const char* password = "azerty123";
+const char* ssid     = "iPhone";
+const char* password = "mehdi1306";
 
 // DHT Sensor
 const int DHTPin = 27;
